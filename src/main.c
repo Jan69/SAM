@@ -15,13 +15,15 @@
 void WriteWav(char* filename, char* buffer, int bufferlength)
 {
     FILE *file;
-    char* sf="-";
-    if(strncmp(filename,sf,1)==0) file=stdout;
+    //should be equivalent, but more hacky to do filename[0] == '-' && filename[1]==0
+    if(strcmp(filename, "-") == 0) file = stdout;
     else file = fopen(filename, "wb");
     if (file == NULL) return;
+
+    unsigned int filesize=bufferlength + 12 + 16 + 8 - 8;
+
     //RIFF header
     fwrite("RIFF", 4, 1,file);
-    unsigned int filesize=bufferlength + 12 + 16 + 8 - 8;
     fwrite(&filesize, 4, 1, file);
     fwrite("WAVE", 4, 1, file);
 
@@ -29,9 +31,9 @@ void WriteWav(char* filename, char* buffer, int bufferlength)
     fwrite("fmt ", 4, 1, file);
     unsigned int fmtlength = 16;
     fwrite(&fmtlength, 4, 1, file);
-    unsigned short int format=1; //PCM
+    unsigned short int format=1; // PCM
     fwrite(&format, 2, 1, file);
-    unsigned short int channels=1;
+    unsigned short int channels=1; // mono
     fwrite(&channels, 2, 1, file);
     unsigned int samplerate = 22050;
     fwrite(&samplerate, 4, 1, file);
