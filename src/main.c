@@ -14,7 +14,10 @@
 
 void WriteWav(char* filename, char* buffer, int bufferlength)
 {
-    FILE *file = fopen(filename, "wb");
+    FILE *file;
+    char* sf="-";
+    if(strncmp(filename,sf,1)==0) file=stdout;
+    else file = fopen(filename, "wb");
     if (file == NULL) return;
     //RIFF header
     fwrite("RIFF", 4, 1,file);
