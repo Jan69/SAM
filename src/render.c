@@ -107,7 +107,7 @@ unsigned char Read(unsigned char p, unsigned char Y)
     case 173: return amplitude2[Y];
     case 174: return amplitude3[Y];
     }
-    printf("Error reading to tables");
+    fprintf(stderr,"Error reading to tables");
     return 0;
 }
 
@@ -124,7 +124,7 @@ void Write(unsigned char p, unsigned char Y, unsigned char value)
     case 173: amplitude2[Y] = value;  return;
     case 174: amplitude3[Y] = value;  return;
     }
-    printf("Error writing to tables\n");
+    fprintf(stderr,"Error writing to tables\n");
 }
 
 

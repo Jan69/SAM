@@ -6,17 +6,17 @@ extern unsigned char signInputTable2[];
 void PrintPhonemes(unsigned char *phonemeindex, unsigned char *phonemeLength, unsigned char *stress)
 {
     int i = 0;
-    printf("===========================================\n");
+    fprintf(stderr,"===========================================\n");
 
-    printf("Internal Phoneme presentation:\n\n");
-    printf(" idx    phoneme  length  stress\n");
-    printf("------------------------------\n");
+    fprintf(stderr,"Internal Phoneme presentation:\n\n");
+    fprintf(stderr," idx    phoneme  length  stress\n");
+    fprintf(stderr,"------------------------------\n");
 
     while((phonemeindex[i] != 255) && (i < 255))
     {
         if (phonemeindex[i] < 81)
         {
-            printf(" %3i      %c%c      %3i       %i\n",
+            fprintf(stderr," %3i      %c%c      %3i       %i\n",
             phonemeindex[i],
             signInputTable1[phonemeindex[i]],
             signInputTable2[phonemeindex[i]],
@@ -25,12 +25,12 @@ void PrintPhonemes(unsigned char *phonemeindex, unsigned char *phonemeLength, un
             );
         } else
         {
-            printf(" %3i      ??      %3i       %i\n", phonemeindex[i], phonemeLength[i], stress[i]);
+            fprintf(stderr," %3i      ??      %3i       %i\n", phonemeindex[i], phonemeLength[i], stress[i]);
         }
         i++;
     }
-    printf("===========================================\n");
-    printf("\n");
+    fprintf(stderr,"===========================================\n");
+    fprintf(stderr,"\n");
 }
 
 void PrintOutput(
@@ -43,17 +43,17 @@ void PrintOutput(
     unsigned char *a3,
     unsigned char *p)
 {
-    printf("===========================================\n");
-    printf("Final data for speech output:\n\n");
+    fprintf(stderr,"===========================================\n");
+    fprintf(stderr,"Final data for speech output:\n\n");
     int i = 0;
-    printf(" flags ampl1 freq1 ampl2 freq2 ampl3 freq3 pitch\n");
-    printf("------------------------------------------------\n");
+    fprintf(stderr," flags ampl1 freq1 ampl2 freq2 ampl3 freq3 pitch\n");
+    fprintf(stderr,"------------------------------------------------\n");
     while(i < 255)
     {
-        printf("%5i %5i %5i %5i %5i %5i %5i %5i\n", flag[i], a1[i], f1[i], a2[i], f2[i], a3[i], f3[i], p[i]);
+        fprintf(stderr,"%5i %5i %5i %5i %5i %5i %5i %5i\n", flag[i], a1[i], f1[i], a2[i], f2[i], a3[i], f3[i], p[i]);
         i++;
     }
-    printf("===========================================\n");
+    fprintf(stderr,"===========================================\n");
 
 }
 
@@ -63,12 +63,12 @@ void PrintRule(int offset)
 {
     int i = 1;
     unsigned char A = 0;
-    printf("Applying rule: ");
+    fprintf(stderr,"Applying rule: ");
     do
     {
         A = GetRuleByte(offset, i);
-        if ((A&127) == '=') printf(" -> "); else printf("%c", A&127);
+        if ((A&127) == '=') fprintf(stderr," -> "); else fprintf(stderr,"%c", A&127);
         i++;
     } while ((A&128)==0);
-    printf("\n");
+    fprintf(stderr,"\n");
 }

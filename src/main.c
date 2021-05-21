@@ -53,46 +53,46 @@ void WriteWav(char* filename, char* buffer, int bufferlength)
 
 void PrintUsage()
 {
-    printf("%s\n","usage: sam [options] Word1 Word2 ....");
-    printf("%s\n","options");
-    printf("%s\n","    -phonetic         enters phonetic mode. (see below)");
-    printf("%s\n","    -pitch number     set pitch value  (default=64)    ");
-    printf("%s\n","    -speed number     set speed value  (default=72)    ");
-    printf("%s\n","    -throat number    set throat value (default=128)   ");
-    printf("%s\n","    -mouth number     set mouth value  (default=128)   ");
-    printf("%s\n","    -wav filename     output to wav instead of libsdl  ");
-    printf("%s\n","    -sing             special treatment of pitch       ");
-    printf("%s\n","    -debug            print additional debug messages  ");
-    printf("\n");
-    printf("%s\n","     VOWELS                            VOICED CONSONANTS   ");
-    printf("%s\n","IY           f(ee)t                    R        red        ");
-    printf("%s\n","IH           p(i)n                     L        allow      ");
-    printf("%s\n","EH           beg                       W        away       ");
-    printf("%s\n","AE           Sam                       W        whale      ");
-    printf("%s\n","AA           pot                       Y        you        ");
-    printf("%s\n","AH           b(u)dget                  M        Sam        ");
-    printf("%s\n","AO           t(al)k                    N        man        ");
-    printf("%s\n","OH           cone                      NX       so(ng)     ");
-    printf("%s\n","UH           book                      B        bad        ");
-    printf("%s\n","UX           l(oo)t                    D        dog        ");
-    printf("%s\n","ER           bird                      G        again      ");
-    printf("%s\n","AX           gall(o)n                  J        judge      ");
-    printf("%s\n","IX           dig(i)t                   Z        zoo        ");
-    printf("%s\n","                                       ZH       plea(s)ure ");
-    printf("%s\n","   DIPHTHONGS                          V        seven      ");
-    printf("%s\n","EY           m(a)de                    DH       (th)en     ");
-    printf("%s\n","AY           h(igh)                    ");
-    printf("%s\n","OY           boy                       ");
-    printf("%s\n","AW           h(ow)                     UNVOICED CONSONANTS ");
-    printf("%s\n","OW           slow                      S         Sam       ");
-    printf("%s\n","UW           crew                      SH        fish      ");
-    printf("%s\n","                                       F         fish      ");
-    printf("%s\n","                                       TH        thin      ");
-    printf("%s\n"," SPECIAL PHONEMES                      P         poke      ");
-    printf("%s\n","UL           sett(le) (=AXL)           T         talk      ");
-    printf("%s\n","UM           astron(omy) (=AXM)        K         cake      ");
-    printf("%s\n","UN           functi(on) (=AXN)         CH        speech    ");
-    printf("%s\n","Q            kitt-en (glottal stop)    /H        a(h)ead   ");
+    fprintf(stderr,"%s\n","usage: sam [options] Word1 Word2 ....");
+    fprintf(stderr,"%s\n","options");
+    fprintf(stderr,"%s\n","    -phonetic         enters phonetic mode. (see below)");
+    fprintf(stderr,"%s\n","    -pitch number     set pitch value  (default=64)    ");
+    fprintf(stderr,"%s\n","    -speed number     set speed value  (default=72)    ");
+    fprintf(stderr,"%s\n","    -throat number    set throat value (default=128)   ");
+    fprintf(stderr,"%s\n","    -mouth number     set mouth value  (default=128)   ");
+    fprintf(stderr,"%s\n","    -wav filename     output to wav instead of libsdl  ");
+    fprintf(stderr,"%s\n","    -sing             special treatment of pitch       ");
+    fprintf(stderr,"%s\n","    -debug            print additional debug messages  ");
+    fprintf(stderr,"\n");
+    fprintf(stderr,"%s\n","     VOWELS                            VOICED CONSONANTS   ");
+    fprintf(stderr,"%s\n","IY           f(ee)t                    R        red        ");
+    fprintf(stderr,"%s\n","IH           p(i)n                     L        allow      ");
+    fprintf(stderr,"%s\n","EH           beg                       W        away       ");
+    fprintf(stderr,"%s\n","AE           Sam                       W        whale      ");
+    fprintf(stderr,"%s\n","AA           pot                       Y        you        ");
+    fprintf(stderr,"%s\n","AH           b(u)dget                  M        Sam        ");
+    fprintf(stderr,"%s\n","AO           t(al)k                    N        man        ");
+    fprintf(stderr,"%s\n","OH           cone                      NX       so(ng)     ");
+    fprintf(stderr,"%s\n","UH           book                      B        bad        ");
+    fprintf(stderr,"%s\n","UX           l(oo)t                    D        dog        ");
+    fprintf(stderr,"%s\n","ER           bird                      G        again      ");
+    fprintf(stderr,"%s\n","AX           gall(o)n                  J        judge      ");
+    fprintf(stderr,"%s\n","IX           dig(i)t                   Z        zoo        ");
+    fprintf(stderr,"%s\n","                                       ZH       plea(s)ure ");
+    fprintf(stderr,"%s\n","   DIPHTHONGS                          V        seven      ");
+    fprintf(stderr,"%s\n","EY           m(a)de                    DH       (th)en     ");
+    fprintf(stderr,"%s\n","AY           h(igh)                    ");
+    fprintf(stderr,"%s\n","OY           boy                       ");
+    fprintf(stderr,"%s\n","AW           h(ow)                     UNVOICED CONSONANTS ");
+    fprintf(stderr,"%s\n","OW           slow                      S         Sam       ");
+    fprintf(stderr,"%s\n","UW           crew                      SH        fish      ");
+    fprintf(stderr,"%s\n","                                       F         fish      ");
+    fprintf(stderr,"%s\n","                                       TH        thin      ");
+    fprintf(stderr,"%s\n"," SPECIAL PHONEMES                      P         poke      ");
+    fprintf(stderr,"%s\n","UL           sett(le) (=AXL)           T         talk      ");
+    fprintf(stderr,"%s\n","UM           astron(omy) (=AXM)        K         cake      ");
+    fprintf(stderr,"%s\n","UN           functi(on) (=AXN)         CH        speech    ");
+    fprintf(stderr,"%s\n","Q            kitt-en (glottal stop)    /H        a(h)ead   ");
 }
 
 #ifdef USESDL
@@ -129,7 +129,7 @@ void OutputSound()
     /* Open the audio device and start playing sound! */
     if ( SDL_OpenAudio(&fmt, NULL) < 0 )
     {
-        printf("Unable to open audio: %s\n", SDL_GetError());
+        fprintf(stderr,"Unable to open audio: %s\n", SDL_GetError());
         exit(1);
     }
     SDL_PauseAudio(0);
@@ -227,8 +227,8 @@ int main(int argc, char **argv)
 
     if (debug)
     {
-        if (phonetic) printf("phonetic input: %s\n", input);
-        else printf("text input: %s\n", input);
+        if (phonetic) fprintf(stderr,"phonetic input: %s\n", input);
+        else fprintf(stderr,"text input: %s\n", input);
     }
 
     if (!phonetic)
@@ -236,13 +236,13 @@ int main(int argc, char **argv)
         strncat(input, "[", 255);
         if (!TextToPhonemes((unsigned char *)input)) return 1;
         if (debug)
-            printf("phonetic input: %s\n", input);
+            fprintf(stderr,"phonetic input: %s\n", input);
     } else strncat(input, "\x9b", 255);
 
 #ifdef USESDL
     if ( SDL_Init(SDL_INIT_AUDIO) < 0 )
     {
-        printf("Unable to init SDL: %s\n", SDL_GetError());
+        fprintf(stderr,"Unable to init SDL: %s\n", SDL_GetError());
         exit(1);
     }
     atexit(SDL_Quit);
