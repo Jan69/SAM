@@ -4,6 +4,8 @@ SAM
 Software Automatic Mouth - Tiny Speech Synthesizer 
 
 ***(most of the README is written by the original porter (s-macke I think))***
+*this seems to be so direct port that it retains the limits of the original*
+*such as not being able to read out long texts, and having trouble with punctuation sometimes*
 
 What is SAM?
 ============
