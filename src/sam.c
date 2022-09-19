@@ -93,6 +93,7 @@ void Init()
     bufferpos = 0;
     // TODO, check for free the memory, 10 seconds of output should be more than enough
     buffer = malloc(22050*10);
+    memset(buffer, 0x80, 22050 * 10); //reduce clicking at end, from AlexGuo1998
 
     /*
     freq2data = &mem[45136];
